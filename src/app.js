@@ -31,6 +31,7 @@ mongoose
   })
   .then(() => {
     /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
+    console.log('connection to mongoUrl was successful');
   })
   .catch(err => {
     console.log(
@@ -69,18 +70,18 @@ app.use((req, res, next) => {
  * Primary app routes.
  */
 
-app.get('/', async (req, res, next) => {
-  const getApiVersion = res => {
+app.get('/', async (req, res) => {
+  const getApiVersion = resp => {
     fs.readFile(path.resolve(__dirname, '../package.json'), (err, data) => {
       if (err) throw err;
       const packageJson = JSON.parse(data.toString());
       const { version } = packageJson;
-      res.status(200).send(`Api Version - ${version}`);
+      resp.status(200).send(`Api Version - ${version}`);
     });
   };
   getApiVersion(res);
 });
 
-app.use('/api', apiRoutes);
+app.use('/api/v1', apiRoutes);
 
 export default app;

@@ -1,5 +1,8 @@
-const express = require('express');
+import { Router } from 'express';
+import questionRouter from './modules/question/routes';
 
-const router = express.Router();
+const apiRoutes = Router();
 
-module.exports = router;
+apiRoutes.use('/question', questionRouter);
+
+export default apiRoutes;
