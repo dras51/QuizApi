@@ -1,11 +1,17 @@
-import Question from '../../model/index';
+// import Question from '../../model/index';
+import Quiz from '../../../quiz/model';
 
 const updateQuestion = async (req, res) => {
   try {
-    const question = await Question.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true
-    });
+    const quiz = await Quiz.findById(req.params.quizID);
+    const question = await quiz.questions.id(req.params.id);
+    question.set(req.body);
+
+    await quiz.save();
+    // const question = await Quiz.findByIdAndUpdate(req.params.id, req.body, {
+    //   new: true,
+    //   runValidators: true
+    // });
     res.status(201).json({
       status: 'success',
       data: {
