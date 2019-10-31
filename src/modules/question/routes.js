@@ -8,12 +8,12 @@ import updateQuestion from './controller/actions/update';
 const router = express.Router();
 
 router
-  .route('/')
+  .route('/:quizID')
   .get(listQuestions)
   .post(createQuestion);
 
 router
-  .route('/:id')
+  .route('/:quizID/:id')
   .get(viewQuestion)
   .delete(deleteQuestion)
   .patch(updateQuestion);
