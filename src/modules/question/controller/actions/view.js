@@ -1,5 +1,5 @@
 // import Question from '../../model/index';
-import Quiz from '../../../quiz/model';
+import Quiz from 'quizModel';
 
 const viewQuestion = async (req, res) => {
   try {

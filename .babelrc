@@ -1,3 +1,18 @@
 {
-  "presets": ["@babel/preset-env"]
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "root": ["./src"],
+        "alias": {
+          "test": "./test",
+          "underscore": "lodash",
+          "questionModel": "./src/modules/question/model/index.js",
+          "quizModel": "./src/modules/quiz/model/index.js"
+        }
+      }
+    ]
+  ]
 }

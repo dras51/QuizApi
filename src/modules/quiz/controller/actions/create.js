@@ -1,4 +1,4 @@
-import Quiz from '../../model/index';
+import Quiz from 'quizModel';
 
 const createQuiz = async (req, res) => {
   try {

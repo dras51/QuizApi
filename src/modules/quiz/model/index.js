@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { questionSchema } from '../../question/model/index';
+import { questionSchema } from 'questionModel';
 
 const { Schema } = mongoose;
 
