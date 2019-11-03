@@ -3,12 +3,17 @@ import Quiz from 'quizModel';
 const viewQuiz = async (req, res) => {
   try {
     const quiz = await Quiz.findById(req.params.id);
-    res.status(201).json({
-      status: 'success',
-      data: {
-        quiz
-      }
-    });
+
+    if (quiz.archived === false) {
+      res.status(201).json({
+        status: 'success',
+        data: {
+          quiz
+        }
+      });
+    } else {
+      throw new Error(`Can't find Quiz`);
+    }
   } catch (err) {
     res.status(404).json({
       status: 'fail',

@@ -33,6 +33,10 @@ export const quizSchema = new Schema({
   },
   updatedAt: {
     type: Date
+  },
+  archived: {
+    type: Boolean,
+    default: false
   }
 });
 
