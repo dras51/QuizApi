@@ -28,21 +28,21 @@ export const quizSchema = new Schema({
     type: Number,
     default: 0
   },
-  date_added: {
+  createdAt: {
     type: Date
   },
-  date_updated: {
+  updatedAt: {
     type: Date
   }
 });
 
 quizSchema.pre('save', async function() {
-  this.date_added = Date.now();
-  this.date_updated = Date.now();
+  this.createdAt = Date.now();
+  this.updatedAt = Date.now();
 });
 
 quizSchema.pre('findOneAndUpdate', async function() {
-  this.set({ date_updated: new Date() });
+  this.set({ updatedAt: new Date() });
 });
 
 const Quiz = mongoose.model('Quiz', quizSchema);

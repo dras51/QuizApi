@@ -1,4 +1,4 @@
-import Quiz from '../../model';
+import Quiz from 'quizModel';
 // import archive from 'mongoose-archive';
 
 const archciveQuestion = async (req, res) => {

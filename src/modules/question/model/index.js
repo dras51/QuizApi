@@ -14,6 +14,13 @@ export const questionSchema = new Schema({
   },
   questionType: {
     type: String,
+    enum: [
+      'yes or no',
+      'true or false',
+      'multiple choice',
+      'text input',
+      'single choice from multiple options'
+    ],
     required: true
   },
   rightAnswer: {
