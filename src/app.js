@@ -12,6 +12,8 @@ import passport from 'passport';
 import bluebird from 'bluebird';
 import { MONGODB_URI, SESSION_SECRET } from './util/secrets';
 import apiRoutes from './api-routes';
+import AppError from './util/appError';
+import globalErrorHandler from './util/errorController';
 
 const MongoStore = mongo(session);
 
@@ -83,5 +85,14 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api/v1', apiRoutes);
+
+app.all('*', (req, res, next) => {
+  // const err = new Error(`can't find ${req.originalUrl} on this Srerver`);
+  // err.status = 'fail';
+  // err.statusCode = 404;
+  next(new AppError(`can't find ${req.originalUrl} on this Srerver`, 404));
+});
+
+app.use(globalErrorHandler);
 
 export default app;

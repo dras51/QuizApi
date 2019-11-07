@@ -34,7 +34,7 @@
     "node/no-missing-import": [
       "error",
       {
-        "allowModules": ["quizModel", "questionModel"],
+        "allowModules": ["quizModel", "questionModel", "catchAsync"],
         "resolvePaths": [],
         "tryExtensions": [".js", ".json", ".node"]
       }

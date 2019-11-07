@@ -10,7 +10,8 @@
           "test": "./test",
           "underscore": "lodash",
           "questionModel": "./src/modules/question/model/index.js",
-          "quizModel": "./src/modules/quiz/model/index.js"
+          "quizModel": "./src/modules/quiz/model/index.js",
+          "catchAsync": "./src/util/catchAsync.js"
         }
       }
     ]
