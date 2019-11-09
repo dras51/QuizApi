@@ -39,7 +39,8 @@ export const quizSchema = new Schema({
   },
   archived: {
     type: Boolean,
-    default: false
+    default: false,
+    select: false
   }
 });
 

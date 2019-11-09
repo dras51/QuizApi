@@ -35,8 +35,7 @@ export const questionSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
-    select: false
+    default: Date.now()
   },
   quiz: {
     type: mongoose.Schema.ObjectId,
@@ -50,7 +49,7 @@ export const questionSchema = new Schema({
 questionSchema.pre(/^find/, async function() {
   this.populate({
     path: 'quiz',
-    select: 'title category -questions'
+    select: 'title category'
   });
 });
 

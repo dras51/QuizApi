@@ -1,8 +1,15 @@
 import Quiz from 'quizModel';
+import APIfeatures from '../../../../util/APIfeatures';
 
 const listQuiz = async (req, res) => {
   try {
-    const quizes = await Quiz.find({ archived: false });
+    const features = new APIfeatures(Quiz.find({ archived: false }), req.query)
+      .filter()
+      .sort()
+      .LimitFields()
+      .paginaton();
+
+    const quizes = await features.query;
     res.status(200).json({
       status: 'success',
       results: quizes.length,
