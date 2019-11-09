@@ -1,10 +1,8 @@
-// import Question from '../../model/index';
-import Quiz from 'quizModel';
+import Question from '../../model/index';
 
 const viewQuestion = async (req, res) => {
   try {
-    const quiz = await Quiz.findById(req.params.quizID);
-    const question = await quiz.questions.id(req.params.id);
+    const question = await Question.findById(req.params.id);
     res.status(200).json({
       status: 'success',
       data: {

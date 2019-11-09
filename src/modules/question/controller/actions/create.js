@@ -1,18 +1,12 @@
-import Quiz from 'quizModel';
+import Question from '../../model/index';
 
 const createQuestion = async (req, res) => {
   try {
-    // const newQuestion = await Question.create(req.body);
-    const quiz = await Quiz.findById(req.params.quizID);
-
-    quiz.questions.unshift(req.body);
-    const newQuestion = quiz.questions[0];
-
-    await quiz.save();
+    const newQuestion = await Question.create(req.body);
     res.status(201).json({
       status: 'success',
       data: {
-        newQuestion
+        question: newQuestion
       }
     });
   } catch (err) {

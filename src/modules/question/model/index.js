@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+// import Quiz from '../../quiz/model';
+// import { quizSchema } from '../../quiz/model/index';
 
 const { Schema } = mongoose;
 
@@ -35,8 +37,26 @@ export const questionSchema = new Schema({
     type: Date,
     default: Date.now(),
     select: false
+  },
+  quiz: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Quiz',
+    required: [true, 'A question must belong to a quiz!']
   }
 });
+
+//Query Middleware
+
+questionSchema.pre(/^find/, async function() {
+  this.populate({
+    path: 'quiz',
+    select: 'title category -questions'
+  });
+});
+
+// questionSchema.pre('save', async function() {
+//   Quiz.totalScore += this.score;
+// });
 
 const Question = mongoose.model('Question', questionSchema);
 

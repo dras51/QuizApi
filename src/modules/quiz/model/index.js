@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { questionSchema } from 'questionModel';
+// import Question from '../../question/model';
 
 const { Schema } = mongoose;
 
@@ -9,9 +9,12 @@ export const quizSchema = new Schema({
     default: 'Undefined',
     unique: true
   },
-  questions: {
-    type: [questionSchema]
-  },
+  questions: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Question'
+    }
+  ],
   timer: {
     type: Number,
     default: 15
@@ -47,6 +50,13 @@ quizSchema.pre('save', async function() {
 
 quizSchema.pre('findOneAndUpdate', async function() {
   this.set({ updatedAt: new Date() });
+});
+
+quizSchema.pre(/^find/, async function() {
+  this.populate({
+    path: 'questions',
+    select: '-__v'
+  });
 });
 
 const Quiz = mongoose.model('Quiz', quizSchema);

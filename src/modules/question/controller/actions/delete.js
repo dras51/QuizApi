@@ -1,12 +1,8 @@
-// import Question from '../../model/index';
-import Quiz from 'quizModel';
+import Question from '../../model/index';
 
 const deleteQuestion = async (req, res) => {
   try {
-    // await Question.findByIdAndDelete(req.params.id);
-    const quiz = await Quiz.findById(req.params.quizID);
-    await quiz.questions.id(req.params.id).remove();
-    await quiz.save();
+    await Question.findByIdAndDelete(req.params.id);
     res.status(204).json({
       status: 'success',
       data: null
