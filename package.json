@@ -1,12 +1,12 @@
 {
-  "name": "express-nodejs-starter",
+  "name": "QuizAPI",
   "version": "0.1.0",
-  "description": "A starting point for Node.js express apps with TypeScript",
+  "description": "This is a quiz API",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/TypeScript-Node-Starter"
+    "url": "https://github.com/dras51/QuizApi"
   },
-  "author": "Bowden Kelly",
+  "author": "David Olabode",
   "license": "MIT",
   "scripts": {
     "start": "npm run serve",
