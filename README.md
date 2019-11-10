@@ -86,7 +86,7 @@ We use [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) for
 
 ## Authors
 
-- **David Olabode** - _Initial work_ - [Dras51](https://github.com/PurpleBooth)
+- **David Olabode** - _Initial work_ - [Dras51](https://github.com/dras51)
 
 See also the list of [contributors](https://github.com/dras51/QuizApi/graphs/contributors) who participated in this project.
 
