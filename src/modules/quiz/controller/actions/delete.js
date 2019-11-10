@@ -1,4 +1,4 @@
-import Quiz from 'quizModel';
+import Quiz from 'quizModule/model/index';
 
 const deleteQuiz = async (req, res) => {
   try {

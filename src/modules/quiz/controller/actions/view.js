@@ -1,4 +1,4 @@
-import Quiz from 'quizModel';
+import Quiz from 'quizModule/model/index';
 
 const viewQuiz = async (req, res) => {
   try {

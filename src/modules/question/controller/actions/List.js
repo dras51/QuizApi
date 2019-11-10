@@ -1,5 +1,5 @@
-import Question from '../../model/index';
-import APIfeatures from '../../../../util/APIfeatures';
+import Question from 'questionModule/model/index';
+import APIfeatures from 'util/APIfeatures';
 
 const listQuestion = async (req, res) => {
   try {

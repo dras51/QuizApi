@@ -1,5 +1,5 @@
-import Quiz from 'quizModel';
-import APIfeatures from '../../../../util/APIfeatures';
+import Quiz from 'quizModule/model/index';
+import APIfeatures from 'util/APIfeatures';
 
 const listQuiz = async (req, res) => {
   try {

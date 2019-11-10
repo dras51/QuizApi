@@ -9,9 +9,9 @@
         "alias": {
           "test": "./test",
           "underscore": "lodash",
-          "questionModel": "./src/modules/question/model/index.js",
-          "quizModel": "./src/modules/quiz/model/index.js",
-          "catchAsync": "./src/util/catchAsync.js"
+          "questionModule": "./src/modules/question/",
+          "quizModule": "./src/modules/quiz/",
+          "util": "./src/util/"
         }
       }
     ]

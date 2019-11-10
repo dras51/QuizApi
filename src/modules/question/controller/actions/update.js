@@ -1,4 +1,4 @@
-import Question from '../../model/index';
+import Question from 'questionModule/model/index';
 
 const updateQuestion = async (req, res) => {
   try {
