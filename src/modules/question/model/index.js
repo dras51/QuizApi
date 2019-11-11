@@ -46,12 +46,12 @@ export const questionSchema = new Schema({
 
 //Query Middleware
 
-questionSchema.pre(/^find/, async function() {
-  this.populate({
-    path: 'quiz',
-    select: 'title category'
-  });
-});
+// questionSchema.pre(/^find/, async function() {
+//   this.populate({
+//     path: 'quiz',
+//     select: 'title category'
+//   });
+// });
 
 // questionSchema.pre('save', async function() {
 //   Quiz.totalScore += this.score;
