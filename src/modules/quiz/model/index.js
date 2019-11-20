@@ -56,7 +56,7 @@ quizSchema.pre('findOneAndUpdate', async function(next) {
   next();
 });
 
-quizSchema.post(/^find/, function(next) {
+quizSchema.pre(/^find/, function(next) {
   this.find({ archived: { $ne: true } });
   next();
 });
