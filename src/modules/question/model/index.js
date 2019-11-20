@@ -1,14 +1,15 @@
 import mongoose from 'mongoose';
-// import Quiz from '../../quiz/model';
-// import { quizSchema } from '../../quiz/model/index';
+import Quiz from '../../quiz/model';
+import AppError from '../../../util/appError';
+import { hasOne } from '../../../util/modelRelationships';
 
 const { Schema } = mongoose;
+const identifier = Schema.Types.ObjectId;
 
 export const questionSchema = new Schema({
   question: {
     type: String,
-    required: [true, 'Question is required'],
-    unique: true
+    required: [true, 'Question is required']
   },
   score: {
     type: Number,
@@ -36,26 +37,28 @@ export const questionSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now()
-  },
-  quiz: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Quiz',
-    required: [true, 'A question must belong to a quiz!']
   }
 });
 
 //Query Middleware
 
-// questionSchema.pre(/^find/, async function() {
-//   this.populate({
-//     path: 'quiz',
-//     select: 'title category'
-//   });
-// });
+questionSchema.plugin(hasOne, {
+  ref: 'Quiz',
+  type: identifier,
+  name: 'quizId'
+});
 
-// questionSchema.pre('save', async function() {
-//   Quiz.totalScore += this.score;
-// });
+questionSchema.pre('save', async function(next) {
+  const quiz = await Quiz.findById(this.quizId);
+  quiz.questions.forEach(el => {
+    if (el.question === this.question) {
+      return next(new AppError('This Question already exit', 401));
+    }
+  });
+  quiz.questions.push(this._id);
+  quiz.save();
+  next();
+});
 
 const Question = mongoose.model('Question', questionSchema);
 

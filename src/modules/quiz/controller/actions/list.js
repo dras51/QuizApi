@@ -3,7 +3,7 @@ import APIfeatures from 'util/APIfeatures';
 
 const listQuiz = async (req, res) => {
   try {
-    const features = new APIfeatures(Quiz.find({ archived: false }), req.query)
+    const features = new APIfeatures(Quiz.find(), req.query)
       .filter()
       .sort()
       .LimitFields()
