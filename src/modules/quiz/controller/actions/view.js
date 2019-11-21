@@ -4,16 +4,12 @@ const viewQuiz = async (req, res) => {
   try {
     const quiz = await Quiz.findById(req.params.id);
 
-    if (quiz.archived === false) {
-      res.status(201).json({
-        status: 'success',
-        data: {
-          quiz
-        }
-      });
-    } else {
-      throw new Error(`Can't find Quiz`);
-    }
+    res.status(201).json({
+      status: 'success',
+      data: {
+        quiz
+      }
+    });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
