@@ -8,8 +8,7 @@ const identifier = Schema.Types.ObjectId;
 export const quizSchema = new Schema({
   category: {
     type: String,
-    default: 'Undefined',
-    unique: true
+    default: 'Undefined'
   },
   timer: {
     type: Number,
@@ -17,7 +16,8 @@ export const quizSchema = new Schema({
   },
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   description: {
     type: String,
