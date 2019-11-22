@@ -5,9 +5,7 @@ const viewQuestion = async (req, res) => {
     const question = await Question.findById(req.params.id);
     res.status(200).json({
       status: 'success',
-      data: {
-        question
-      }
+      data: { question }
     });
   } catch (err) {
     res.status(404).json({
