@@ -3,7 +3,7 @@ import AnswerSheet from '../../model';
 const listAnswerSheet = async (req, res) => {
   try {
     const answerSheets = await AnswerSheet.find({
-      quizId: req.query.quizId
+      quizId: req.params.quizId
     });
     res.status(200).json({
       status: 'success',

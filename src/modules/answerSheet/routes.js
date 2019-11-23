@@ -7,10 +7,8 @@ import deleteAnswerSheet from './controller/actions/delete';
 
 const router = express.Router();
 
-router
-  .route('/')
-  .get(listAnswerSheet)
-  .post(createAnswerSheet);
+router.route('/').post(createAnswerSheet);
+router.route('/:quizId').get(listAnswerSheet);
 
 router
   .route('/:id')
