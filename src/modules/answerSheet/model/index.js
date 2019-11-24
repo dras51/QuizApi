@@ -28,6 +28,6 @@ answerSheetSchema.plugin(hasMany, {
   name: 'answers'
 });
 
-const AnswerSheet = mongoose.model('AnswerSheey', answerSheetSchema);
+const AnswerSheet = mongoose.model('AnswerSheet', answerSheetSchema);
 
 export default AnswerSheet;
