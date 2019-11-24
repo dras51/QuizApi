@@ -21,6 +21,7 @@
     "serve-debug": "nodemon --inspect dist/server.js"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.7.4",
     "async": "^3.1.0",
     "babel-node": "0.0.1-security",
     "bcrypt-nodejs": "^0.0.3",
@@ -46,6 +47,7 @@
     "pug": "^2.0.4",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "typescript": "^3.7.2",
     "winston": "^2.4.2"
   },
   "devDependencies": {
@@ -55,7 +57,16 @@
     "@babel/preset-env": "^7.6.3",
     "@types/bluebird": "^3.5.29",
     "@types/compression": "^1.0.1",
+    "@types/connect-mongo": "^3.0.0",
+    "@types/errorhandler": "0.0.32",
     "@types/express": "^4.17.2",
+    "@types/express-flash": "0.0.1",
+    "@types/express-session": "^1.15.16",
+    "@types/lodash": "^4.14.149",
+    "@types/lusca": "^1.6.1",
+    "@types/passport": "^1.0.2",
+    "@types/passport-facebook": "^2.1.9",
+    "@types/passport-local": "^1.0.33",
     "babel-eslint": "^10.0.3",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-register": "^6.26.0",
