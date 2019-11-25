@@ -6,11 +6,12 @@
       {
         "cwd": "babelrc",
         "root": ["./src"],
+        "extensions": [".js", ".jsx", ".es", ".es6", ".mjs", ".ts"],
         "alias": {
-          "test": "./test",
-          "underscore": "lodash",
           "questionModule": "./src/modules/question/",
           "quizModule": "./src/modules/quiz/",
+          "answer-module": "./src/modules/answer",
+          "answer-sheet-module": "./src/modules/answerSheet",
           "util": "./src/util/"
         }
       }

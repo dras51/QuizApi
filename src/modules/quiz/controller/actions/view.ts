@@ -1,9 +1,10 @@
 import Quiz from 'quizModule/model/index';
+import express from 'express';
+// import { IQuizProp } from
 
-const viewQuiz = async (req, res) => {
+const viewQuiz = async (req: express.Request, res: express.Response) => {
   try {
-    const quiz = await Quiz.findById(req.params.id);
-
+    const quiz = Quiz.findById(req.params.id);
     res.status(201).json({
       status: 'success',
       data: {

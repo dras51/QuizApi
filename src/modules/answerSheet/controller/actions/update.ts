@@ -1,6 +1,10 @@
-import AnswerSheet from '../../model';
+import AnswerSheet from 'answer-sheet-module/model';
+import express from 'express';
 
-const updateAnswerSheet = async (req, res) => {
+const updateAnswerSheet = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     const answerSheet = await AnswerSheet.findByIdAndUpdate(
       req.params.id,

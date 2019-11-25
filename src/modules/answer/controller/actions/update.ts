@@ -1,6 +1,7 @@
-import Answer from '../../model';
+import Answer from 'answer-module/model';
+import express from 'express';
 
-const updateAnswer = async (req, res) => {
+const updateAnswer = async (req: express.Request, res: express.Response) => {
   try {
     const updatedAnswer = Answer.findByIdAndUpdate(
       req.params.id,

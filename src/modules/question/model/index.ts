@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Quiz from '../../quiz/model';
-import AppError from '../../../util/appError';
-import { hasOne } from '../../../util/modelRelationships';
+import AppError from 'util/appError';
+import { hasOne } from 'util/model-relationships';
 
 const { Schema } = mongoose;
 const identifier = Schema.Types.ObjectId;

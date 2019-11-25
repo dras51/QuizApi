@@ -1,6 +1,7 @@
 import Question from 'questionModule/model/index';
+import express from 'express';
 
-const deleteQuestion = async (req, res) => {
+const deleteQuestion = async (req: express.Request, res: express.Response) => {
   try {
     await Question.findByIdAndDelete(req.params.id);
     res.status(204).json({

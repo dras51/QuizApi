@@ -1,6 +1,7 @@
-import AnswerSheet from '../../model';
+import AnswerSheet from 'answer-sheet-module/model';
+import express from 'express';
 
-const viewAnswerSheet = async (req, res) => {
+const viewAnswerSheet = async (req: express.Request, res: express.Response) => {
   try {
     const answerSheet = await AnswerSheet.findById(req.params.id);
 

@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unsupported-features/es-syntax
 import errorHandler from 'errorhandler';
 
 import app from './app';

@@ -1,6 +1,7 @@
 import Question from 'questionModule/model/index';
+import express from 'express';
 
-const createQuestion = async (req, res) => {
+const createQuestion = async (req: express.Request, res: express.Response) => {
   try {
     const newQuestion = await Question.create(req.body);
     res.status(201).json({

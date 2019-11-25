@@ -50,7 +50,7 @@
       {
         "allowModules": ["catchAsync"],
         "resolvePaths": ["questionModule", "quizModule"],
-        "tryExtensions": [".js", ".json", ".node"]
+        "tryExtensions": [".js", ".json", ".node", ".ts"]
       }
     ]
   }

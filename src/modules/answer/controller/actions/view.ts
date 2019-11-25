@@ -1,6 +1,7 @@
-import Answer from '../../model';
+import Answer from 'answer-module/model';
+import express from 'express';
 
-const viewAnswer = async (req, res) => {
+const viewAnswer = async (req: express.Request, res: express.Response) => {
   try {
     const answer = await Answer.findById(req.params.id);
     res.status(200).json({

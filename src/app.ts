@@ -73,7 +73,7 @@ app.use((req, res, next) => {
  */
 
 app.get('/', async (req, res) => {
-  const getApiVersion = resp => {
+  const getApiVersion = (resp: express.Response) => {
     fs.readFile(path.resolve(__dirname, '../package.json'), (err, data) => {
       if (err) throw err;
       const packageJson = JSON.parse(data.toString());
@@ -87,10 +87,11 @@ app.get('/', async (req, res) => {
 app.use('/api/v1', apiRoutes);
 
 app.all('*', (req, res, next) => {
-  // const err = new Error(`can't find ${req.originalUrl} on this Srerver`);
+  Request;
+  // const err = new Error(`can't find ${req.originalUrl} on this Server`);
   // err.status = 'fail';
   // err.statusCode = 404;
-  next(new AppError(`can't find ${req.originalUrl} on this Srerver`, 404));
+  next(new AppError(`can't find ${req.originalUrl} on this Server`, 404));
 });
 
 app.use(globalErrorHandler);

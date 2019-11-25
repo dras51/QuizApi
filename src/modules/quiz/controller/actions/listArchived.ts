@@ -1,20 +1,21 @@
 import Quiz from 'quizModule/model/index';
-import APIfeatures from 'util/APIfeatures';
+import ApiFeatures from 'util/api-features';
+import express from 'express';
 
-const listQuiz = async (req, res) => {
+const listQuiz = async (req: express.Request, res: express.Response) => {
   try {
-    const features = new APIfeatures(Quiz.find({ archived: true }), req.query)
+    const features = new ApiFeatures(Quiz.find({ archived: true }), req.query)
       .filter()
       .sort()
       .LimitFields()
-      .paginaton();
+      .pagination();
 
-    const quizes = await features.query;
+    const quizzes = await features.query;
     res.status(200).json({
       status: 'success',
-      results: quizes.length,
+      results: quizzes.length,
       data: {
-        quizes
+        quizzes
       }
     });
   } catch (err) {

@@ -1,10 +1,15 @@
-import Answer from '../../model';
-
-const listAnswer = async (req, res) => {
+import Answer from 'answer-module/model';
+import express from 'express';
+import ApiFeatures from 'util/api-features';
+const listAnswer = async (req: express.Request, res: express.Response) => {
   try {
-    const answers = await Answer.find({
-      answerSheetId: req.params.answerSheetId
-    });
+    const features = new ApiFeatures(Answer.find(), req.query)
+      .filter()
+      .sort()
+      .LimitFields()
+      .pagination();
+
+    const answers = await features.query;
     res.status(200).json({
       status: 'success',
       data: {

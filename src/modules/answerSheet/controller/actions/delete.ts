@@ -1,6 +1,10 @@
-import AnswerSheet from '../../model';
+import AnswerSheet from 'answer-sheet-module/model';
+import express from 'express';
 
-const deleteAnswerSheet = async (req, res) => {
+const deleteAnswerSheet = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     await AnswerSheet.findByIdAndDelete(req.params.id);
     res.status(204).json({

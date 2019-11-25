@@ -1,6 +1,7 @@
-import Answer from '../../model';
+import Answer from 'answer-module/model';
+import express from 'express';
 
-const createAnswer = async (req, res) => {
+const createAnswer = async (req: express.Request, res: express.Response) => {
   try {
     const answer = await Answer.create({
       userAnswer: req.body.userAnswer,

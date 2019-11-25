@@ -12,40 +12,40 @@ export type options = {
   type: any;
   name: string;
 };
-const hasOne = (schema: any, options: options) => {
+export const hasOne = (schema: any, options: options) => {
   const fieldInString = `{ "${options.name}" : { "ref": "${options.ref}"}}`;
   const field = JSON.parse(fieldInString);
-  field[options.name]["type"] = options.type;
+  field[options.name]['type'] = options.type;
   schema.add(field);
 };
 
-const belongsTo = (schema: any, options: options) => {
+export const belongsTo = (schema: any, options: options) => {
   const fieldInString = `{ "${options.name}" : { "ref": "${options.ref}"}}`;
   const field = JSON.parse(fieldInString);
-  field[options.name]["type"] = options.type;
+  field[options.name]['type'] = options.type;
   schema.add(field);
 };
 
-const mustBelongTo = (schema: any, options: options) => {
+export const mustBelongTo = (schema: any, options: options) => {
   const fieldInString = `{ "${options.name}" : { "ref": "${options.ref}"}}`;
   const field = JSON.parse(fieldInString);
-  field[options.name]["type"] = options.type;
-  field[options.name]["required"] = true;
+  field[options.name]['type'] = options.type;
+  field[options.name]['required'] = true;
   schema.add(field);
 };
 
-const hasMany = (schema: any, options: options) => {
+export const hasMany = (schema: any, options: options) => {
   const fieldInString = `{ "${options.name}" : [{ "ref": "${options.ref}"}]}`;
   const field = JSON.parse(fieldInString);
-  field[options.name][0]["type"] = options.type;
-  field[options.name][0]["default"] = [];
+  field[options.name][0]['type'] = options.type;
+  field[options.name][0]['default'] = [];
   schema.add(field);
 };
 
-const belongsToMany = (schema: any, options: options) => {
+export const belongsToMany = (schema: any, options: options) => {
   const fieldInString = `{ "${options.name}" : [{ "ref": "${options.ref}"}]}`;
   const field = JSON.parse(fieldInString);
-  field[options.name][0]["type"] = options.type;
-  field[options.name][0]["default"] = [];
+  field[options.name][0]['type'] = options.type;
+  field[options.name][0]['default'] = [];
   schema.add(field);
 };

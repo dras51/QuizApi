@@ -1,6 +1,7 @@
 import Quiz from 'quizModule/model/index';
+import express from 'express';
 
-const deleteQuiz = async (req, res) => {
+const deleteQuiz = async (req: express.Request, res: express.Response) => {
   try {
     await Quiz.findByIdAndDelete(req.params.id);
     res.status(204).json({

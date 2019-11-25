@@ -1,11 +1,22 @@
-export default class APIfeatures {
-  constructor(query, queryString) {
+import express from 'express';
+
+interface IQueryString extends express.Request {
+  sort?: string;
+  limit?: number;
+  fields?: string;
+  page?: number;
+}
+
+export default class ApiFeatures {
+  query: any;
+  queryString: IQueryString;
+  constructor(query: any, queryString: IQueryString) {
     this.query = query;
     this.queryString = queryString;
   }
 
   filter() {
-    const queryObj = { ...this.queryString };
+    const queryObj: Record<string, any> = { ...this.queryString };
     const excludedFields = ['sort', 'limit', 'page', 'fields'];
     excludedFields.forEach(el => delete queryObj[el]);
     this.query.find(queryObj);
@@ -26,7 +37,7 @@ export default class APIfeatures {
 
   LimitFields() {
     if (this.queryString.fields) {
-      const fields = this.queryString.split(',').join(' ');
+      const fields = this.queryString.fields.split(',').join(' ');
       this.query = this.query.select(fields);
     } else {
       this.query = this.query.select('-__v');
@@ -35,7 +46,7 @@ export default class APIfeatures {
     return this;
   }
 
-  paginaton() {
+  pagination() {
     const page = this.queryString.page * 1 || 1;
     const limit = this.queryString.limit * 1 || 10;
     const skip = (page - 1) * limit;

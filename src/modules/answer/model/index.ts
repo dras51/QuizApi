@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { hasOne } from '../../../util/modelRelationships';
+import { hasOne } from 'util/model-relationships';
 
 const identifier = Schema.Types.ObjectId;
 

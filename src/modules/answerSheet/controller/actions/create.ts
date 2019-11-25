@@ -1,6 +1,10 @@
-import AnswerSheet from '../../model';
+import AnswerSheet from 'answer-sheet-module/model';
+import express from 'express';
 
-const createAnswerSheet = async (req, res) => {
+const createAnswerSheet = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     const answerSheet = await AnswerSheet.create({
       quizId: req.body.quizId,

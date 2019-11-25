@@ -1,10 +1,17 @@
-import AnswerSheet from '../../model';
+import AnswerSheet from 'answer-sheet-module/model';
+import express from 'express';
+import ApiFeatures from 'util/api-features';
 
-const listAnswerSheet = async (req, res) => {
+const listAnswerSheet = async (req: express.Request, res: express.Response) => {
   try {
-    const answerSheets = await AnswerSheet.find({
-      quizId: req.params.quizId
-    });
+    const features = new ApiFeatures(AnswerSheet.find(), req.query)
+      .filter()
+      .sort()
+      .LimitFields()
+      .pagination();
+
+    const answerSheets = await features.query;
+
     res.status(200).json({
       status: 'success',
       data: {

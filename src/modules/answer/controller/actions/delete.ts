@@ -1,6 +1,7 @@
-import Answer from '../../model';
+import Answer from 'answer-module/model';
+import express from 'express';
 
-const deleteAnswer = async (req, res) => {
+const deleteAnswer = async (req: express.Request, res: express.Response) => {
   try {
     await Answer.findByIdAndDelete(req.params.id);
     res.status(204).json({

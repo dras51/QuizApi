@@ -1,6 +1,7 @@
 import Quiz from 'quizModule/model/index';
+import express from 'express';
 
-const updateQuiz = async (req, res) => {
+const updateQuiz = async (req: express.Request, res: express.Response) => {
   try {
     const quiz = await Quiz.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
