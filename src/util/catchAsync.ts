@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction } from 'express';
 
 const catchAsync = (fn: any) => {
   return (

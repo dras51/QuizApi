@@ -1,5 +1,5 @@
 import express from 'express';
-import listQuizes from './controller/actions/list';
+import listQuizzes from './controller/actions/list';
 import createQuiz from './controller/actions/create';
 import viewQuiz from './controller/actions/view';
 import deleteQuiz from './controller/actions/delete';
@@ -9,7 +9,7 @@ import listArchived from './controller/actions/listArchived';
 const router = express.Router();
 router
   .route('/')
-  .get(listQuizes)
+  .get(listQuizzes)
   .get(listArchived)
   .post(createQuiz);
 
