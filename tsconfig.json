@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "config/*": ["src/config/*"],
+      "public/*": ["src/public/"],
+      "util/*": ["./src/util/*"],
+      "service-modules/*": ["src/modules/*"],
+      "helpers/*": ["src/helpers/*"],
+      "quizModule/*": ["src/modules/quiz/*"],
+      "answer-module/*": ["./src/modules/answer/*"],
+      "answer-sheet-module/*": ["src/modules/answer-sheet/*"],
+      "questionModule/*": ["src/modules/question/*"],
+      "*": ["node_modules/*", "src/types/*"]
+    }
+  },
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

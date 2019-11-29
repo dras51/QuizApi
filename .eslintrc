@@ -1,12 +1,15 @@
 {
+  "root": true,
   "extends": [
     "airbnb",
     "prettier",
     "plugin:node/recommended",
-    "plugin:jest/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
   ],
-  "plugins": ["prettier", "jest"],
+  "plugins": ["prettier", "@typescript-eslint"],
   "parserOptions": {
+    "project": "./tsconfig.json",
     "sourceType": "module"
   },
   "settings": {
@@ -15,17 +18,12 @@
     }
   },
   "env": {
-    "jest/globals": true
+    "browser": true
   },
   "rules": {
-    "jest/no-disabled-tests": "warn",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error",
     "semi": ["error", "always"],
     "prettier/prettier": "error",
-    "no-missing-import": "off",
+    "no-missing-import": "warn",
     "spaced-comment": "off",
     "no-console": "warn",
     "consistent-return": "off",
@@ -41,7 +39,7 @@
     "node/no-unsupported-features/es-syntax": [
       "off",
       {
-        "version": ">=8.0.0",
+        "version": ">=12.0.0",
         "ignores": []
       }
     ],
@@ -49,8 +47,8 @@
       "off",
       {
         "allowModules": ["catchAsync"],
-        "resolvePaths": ["questionModule", "quizModule"],
-        "tryExtensions": [".js", ".json", ".node"]
+        "resolvePaths": ["questionModule", "quizModule", "answer-module"],
+        "tryExtensions": [".js", ".json", ".node", ".ts"]
       }
     ]
   }
