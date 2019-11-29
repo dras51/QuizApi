@@ -1,24 +1,22 @@
 import Question from 'questionModule/model/index';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import AppError from 'util/appError';
+import catchAsync from 'util/catchAsync';
 
-const updateQuestion = async (req: express.Request, res: express.Response) => {
-  try {
+const updateQuestion = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const question = await Question.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     });
+    if (!question) return next(new AppError('Question not found', 404));
     res.status(201).json({
       status: 'success',
       data: {
         question
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default updateQuestion;

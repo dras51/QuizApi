@@ -5,16 +5,17 @@ const identifier = Schema.Types.ObjectId;
 
 export const answerSheetSchema = new Schema({
   userId: {
-    type: String,
-    default: 'Undefined'
+    type: mongoose.Types.ObjectId,
+    required: true
   },
-  quizId: { type: String, required: true },
+  quizId: { type: mongoose.Types.ObjectId, required: true },
   category: {
     type: String,
     default: 'Undefined'
   },
   totalScore: {
-    type: Number
+    type: Number,
+    default: 0
   },
   createdAt: {
     type: Date,

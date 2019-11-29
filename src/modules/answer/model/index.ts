@@ -3,10 +3,18 @@ import { hasOne } from 'util/model-relationships';
 
 const identifier = Schema.Types.ObjectId;
 
-export const answerSchema = new Schema({
+export interface IAnswerProps extends mongoose.Document {
+  userAnswer: string;
+  isCorrect: boolean;
+  createdAt: number;
+  answerSheetId: mongoose.Types.ObjectId;
+  questionId: mongoose.Types.ObjectId;
+}
+
+export const answerSchema: Schema<IAnswerProps> = new Schema({
   userAnswer: {
     type: String,
-    default: 'Undefined'
+    required: true
   },
   isCorrect: {
     type: Boolean
@@ -28,6 +36,6 @@ answerSchema.plugin(hasOne, {
   name: 'questionId'
 });
 
-const Answer = mongoose.model('AnswerSheey', answerSchema);
+const Answer = mongoose.model('Answer', answerSchema);
 
 export default Answer;

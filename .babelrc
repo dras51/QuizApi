@@ -10,8 +10,8 @@
         "alias": {
           "questionModule": "./src/modules/question/",
           "quizModule": "./src/modules/quiz/",
-          "answer-module": "./src/modules/answer",
-          "answer-sheet-module": "./src/modules/answerSheet",
+          "answer-module": "./src/modules/answer/",
+          "answer-sheet-module": "./src/modules/answer-sheet/",
           "util": "./src/util/"
         }
       }

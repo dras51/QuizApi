@@ -1,9 +1,10 @@
-import Question from "questionModule/model/index";
-import ApiFeatures from "util/api-features";
-import express from "express";
+import Question from 'questionModule/model/index';
+import ApiFeatures from 'util/api-features';
+import express from 'express';
+import catchAsync from 'util/catchAsync';
 
-const listQuestion = async (req: express.Request, res: express.Response) => {
-  try {
+const listQuestion = catchAsync(
+  async (req: express.Request, res: express.Response) => {
     const features = new ApiFeatures(Question.find(), req.query)
       .filter()
       .sort()
@@ -12,18 +13,13 @@ const listQuestion = async (req: express.Request, res: express.Response) => {
 
     const questions = await features.query;
     res.status(200).json({
-      status: "success",
+      status: 'success',
       results: questions.length,
       data: {
         questions
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      message: err.message
-    });
   }
-};
+);
 
 export default listQuestion;

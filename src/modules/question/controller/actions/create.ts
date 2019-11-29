@@ -1,21 +1,17 @@
 import Question from 'questionModule/model/index';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import catchAsync from 'util/catchAsync';
 
-const createQuestion = async (req: express.Request, res: express.Response) => {
-  try {
+const createQuestion = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const newQuestion = await Question.create(req.body);
     res.status(201).json({
       status: 'success',
       data: {
-        question: newQuestion
+        newQuestion
       }
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default createQuestion;

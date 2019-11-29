@@ -1,11 +1,9 @@
-import AnswerSheet from 'answer-sheet-module/model';
-import express from 'express';
+import AnswerSheet from 'answer-sheet-module/model/index';
+import express, { NextFunction } from 'express';
+import catchAsync from 'util/catchAsync';
 
-const createAnswerSheet = async (
-  req: express.Request,
-  res: express.Response
-) => {
-  try {
+const createAnswerSheet = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const answerSheet = await AnswerSheet.create({
       quizId: req.body.quizId,
       userId: req.body.userId,
@@ -19,12 +17,7 @@ const createAnswerSheet = async (
         answerSheet
       }
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default createAnswerSheet;

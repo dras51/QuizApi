@@ -47,7 +47,7 @@
       "off",
       {
         "allowModules": ["catchAsync"],
-        "resolvePaths": ["questionModule", "quizModule"],
+        "resolvePaths": ["questionModule", "quizModule", "answer-module"],
         "tryExtensions": [".js", ".json", ".node", ".ts"]
       }
     ]

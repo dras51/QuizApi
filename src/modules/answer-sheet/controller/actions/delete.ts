@@ -1,12 +1,12 @@
-import Question from 'questionModule/model/index';
+import AnswerSheet from 'answer-sheet-module/model/index';
 import express, { NextFunction } from 'express';
 import catchAsync from 'util/catchAsync';
 import AppError from 'util/appError';
 
-const deleteQuestion = catchAsync(
+const deleteAnswerSheet = catchAsync(
   async (req: express.Request, res: express.Response, next: NextFunction) => {
-    const question = await Question.findByIdAndDelete(req.params.id);
-    if (!question) return next(new AppError('Question not found', 404));
+    const answerSheet = await AnswerSheet.findByIdAndDelete(req.params.id);
+    if (!answerSheet) return next(new AppError('Answer Sheet not found', 404));
     res.status(204).json({
       status: 'success',
       data: null
@@ -14,4 +14,4 @@ const deleteQuestion = catchAsync(
   }
 );
 
-export default deleteQuestion;
+export default deleteAnswerSheet;

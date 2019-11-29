@@ -12,6 +12,7 @@ export interface IQuizProps extends mongoose.Document {
   description: string;
   totalScore: number;
   archived: boolean;
+  questions: [];
 }
 
 export const quizSchema: Schema<IQuizProps> = new Schema({

@@ -1,15 +1,37 @@
-import mongoose from 'mongoose';
-import Quiz from '../../quiz/model';
+import mongoose, { Schema } from 'mongoose';
+import Quiz, { IQuizProps } from '../../quiz/model';
 import AppError from 'util/appError';
 import { hasOne } from 'util/model-relationships';
 
-const { Schema } = mongoose;
 const identifier = Schema.Types.ObjectId;
 
-export const questionSchema = new Schema({
+type quizProps = {
+  category: string;
+  createdAt: number;
+  updatedAt: number;
+  timer: number;
+  title: string;
+  description: string;
+  totalScore: number;
+  archived: boolean;
+  questions: [];
+};
+
+export interface IQuestionProps extends mongoose.Document {
+  question: string;
+  score: number;
+  questionType: Array<string>;
+  rightAnswer: string;
+  answers: [];
+  createdAt: number;
+  quizId: mongoose.Types.ObjectId;
+}
+
+export const questionSchema: Schema<IQuestionProps> = new Schema({
   question: {
     type: String,
-    required: [true, 'Question is required']
+    required: [true, 'Question is required'],
+    unique: true
   },
   score: {
     type: Number,
@@ -48,17 +70,16 @@ questionSchema.plugin(hasOne, {
   name: 'quizId'
 });
 
-questionSchema.pre('save', async function(next) {
-  const quiz = await Quiz.findById(this.quizId);
-  quiz.questions.forEach(el => {
-    if (el.question === this.question) {
-      return next(new AppError('This Question already exit', 401));
-    }
-  });
-  quiz.questions.push(this._id);
-  quiz.save();
-  next();
-});
+// questionSchema.pre('save', async function(next) {
+//   const quiz = await Quiz.findById((this as IQuestionProps).quizId);
+//   (quiz as IQuizProps).questions.forEach((el: IQuestionProps) => {
+//     if (el.question === (this as IQuestionProps).question) {
+//       return next(new AppError('This Question already exit', 401));
+//     }
+//   });
+//   quiz.save();
+//   next();
+// });
 
 const Question = mongoose.model('Question', questionSchema);
 

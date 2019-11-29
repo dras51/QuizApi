@@ -1,19 +1,17 @@
 import Question from 'questionModule/model/index';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import AppError from 'util/appError';
+import catchAsync from 'util/catchAsync';
 
-const viewQuestion = async (req: express.Request, res: express.Response) => {
-  try {
+const viewQuestion = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const question = await Question.findById(req.params.id);
+    if (!question) return next(new AppError('Question not found', 404));
     res.status(200).json({
       status: 'success',
       data: { question }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default viewQuestion;

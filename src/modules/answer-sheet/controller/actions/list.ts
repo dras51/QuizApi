@@ -1,9 +1,10 @@
-import AnswerSheet from 'answer-sheet-module/model';
-import express from 'express';
+import AnswerSheet from 'answer-sheet-module/model/index';
+import express, { NextFunction } from 'express';
 import ApiFeatures from 'util/api-features';
+import catchAsync from 'util/catchAsync';
 
-const listAnswerSheet = async (req: express.Request, res: express.Response) => {
-  try {
+const listAnswerSheet = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const features = new ApiFeatures(AnswerSheet.find(), req.query)
       .filter()
       .sort()
@@ -18,12 +19,7 @@ const listAnswerSheet = async (req: express.Request, res: express.Response) => {
         answerSheets
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default listAnswerSheet;

@@ -1,8 +1,9 @@
 import Answer from 'answer-module/model';
 import express from 'express';
+import catchAsync from 'util/catchAsync';
 
-const createAnswer = async (req: express.Request, res: express.Response) => {
-  try {
+const createAnswer = catchAsync(
+  async (req: express.Request, res: express.Response) => {
     const answer = await Answer.create({
       userAnswer: req.body.userAnswer,
       answerSheetId: req.body.answerSheetId,
@@ -12,12 +13,7 @@ const createAnswer = async (req: express.Request, res: express.Response) => {
       status: 'success',
       data: { answer }
     });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default createAnswer;

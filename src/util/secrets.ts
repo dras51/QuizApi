@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
 import logger from './logger';
+import { MongoUrlOptions } from 'connect-mongo';
 
 if (fs.existsSync('config.env')) {
   logger.debug('Using .env file to supply config environment variables');
@@ -13,11 +14,17 @@ if (fs.existsSync('config.env')) {
 }
 export const ENVIRONMENT = process.env.NODE_ENV;
 const prod = ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
+const test = ENVIRONMENT === 'test';
 
 export const { SESSION_SECRET } = process.env;
-export const MONGODB_URI = prod
-  ? process.env.MONGODB_URI
-  : process.env.MONGODB_URI_LOCAL;
+export let MONGODB_URI: string;
+if (prod) {
+  MONGODB_URI = process.env.MONGODB_URI;
+} else if (test) {
+  MONGODB_URI = process.env.TEST_DB;
+} else {
+  MONGODB_URI = process.env.MONGODB_URI_LOCAL;
+}
 
 if (!SESSION_SECRET) {
   logger.error('No client secret. Set SESSION_SECRET environment variable.');

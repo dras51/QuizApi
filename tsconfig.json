@@ -16,7 +16,7 @@
       "helpers/*": ["src/helpers/*"],
       "quizModule/*": ["src/modules/quiz/*"],
       "answer-module/*": ["./src/modules/answer/*"],
-      "answer-sheet-module/*": ["./src/modules/answerSheet/*"],
+      "answer-sheet-module/*": ["src/modules/answer-sheet/*"],
       "questionModule/*": ["src/modules/question/*"],
       "*": ["node_modules/*", "src/types/*"]
     }

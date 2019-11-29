@@ -1,19 +1,17 @@
 import Answer from 'answer-module/model';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import catchAsync from 'util/catchAsync';
+import AppError from 'util/appError';
 
-const deleteAnswer = async (req: express.Request, res: express.Response) => {
-  try {
-    await Answer.findByIdAndDelete(req.params.id);
+const deleteAnswer = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
+    const answer = await Answer.findByIdAndDelete(req.params.id);
+    if (!answer) return next(new AppError('Answer not found', 404));
     res.status(204).json({
       status: 'success',
       data: null
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default deleteAnswer;

@@ -1,9 +1,10 @@
 import Quiz from 'quizModule/model/index';
 import ApiFeatures from 'util/api-features';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import catchAsync from 'util/catchAsync';
 
-const listQuiz = async (req: express.Request, res: express.Response) => {
-  try {
+const listQuiz = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const features = new ApiFeatures(Quiz.find(), req.query)
       .filter()
       .sort()
@@ -18,12 +19,7 @@ const listQuiz = async (req: express.Request, res: express.Response) => {
         quizzes: quizzes
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default listQuiz;

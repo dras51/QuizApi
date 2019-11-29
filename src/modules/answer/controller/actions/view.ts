@@ -1,21 +1,19 @@
 import Answer from 'answer-module/model';
-import express from 'express';
+import express, { NextFunction } from 'express';
+import catchAsync from 'util/catchAsync';
+import AppError from 'util/appError';
 
-const viewAnswer = async (req: express.Request, res: express.Response) => {
-  try {
+const viewAnswer = catchAsync(
+  async (req: express.Request, res: express.Response, next: NextFunction) => {
     const answer = await Answer.findById(req.params.id);
+    if (!answer) return next(new AppError('answer not found', 404));
     res.status(200).json({
       status: 'success',
       data: {
         answer
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err.message
-    });
   }
-};
+);
 
 export default viewAnswer;
