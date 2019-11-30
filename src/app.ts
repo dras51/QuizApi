@@ -14,7 +14,9 @@ import { MONGODB_URI, SESSION_SECRET } from './util/secrets';
 import apiRoutes from './api-routes';
 import AppError from './util/appError';
 import globalErrorHandler from './util/errorController';
-
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+const swaggerDocument = YAML.load('./swagger.yaml');
 const MongoStore = mongo(session);
 
 // Create Express server
@@ -84,6 +86,7 @@ app.get('/', async (req, res) => {
   getApiVersion(res);
 });
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', apiRoutes);
 
 app.all('*', (req, res, next) => {

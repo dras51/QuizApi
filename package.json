@@ -47,8 +47,10 @@
     "pug": "^2.0.4",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "swagger-ui-express": "^4.1.2",
     "typescript": "^3.7.2",
-    "winston": "^2.4.2"
+    "winston": "^2.4.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -74,6 +76,8 @@
     "@types/passport-facebook": "^2.1.9",
     "@types/passport-local": "^1.0.33",
     "@types/supertest": "^2.0.8",
+    "@types/swagger-ui-express": "^4.1.0",
+    "@types/yamljs": "^0.2.30",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "babel-eslint": "^10.0.3",

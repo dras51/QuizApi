@@ -1,0 +1,491 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0-oas3"
+  title: Quiz Api
+  description: A simple API For creating and taking quiz
+tags:
+  - name: quiz
+    description: Everything about Quiz
+  - name: question
+    description: Everthing about question
+  - name: answer sheet
+    description: Everthing about answer sheets
+  - name: answer
+    description: Everthing about answers
+paths:
+  /quiz:
+    get:
+      summary: Gets all quiz
+      tags:
+        - quiz
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: sorts the quizzes according to the specified parameter
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: number of quizzes contained in a page
+        - in: query
+          name: fields
+          schema:
+            type: integer
+          description: The fields to be displayed when the query returns
+
+      description: Returns a list containing all quizzes
+      responses:
+        "200":
+          description: A list of Quiz
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: add a quiz
+      tags:
+        - quiz
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/quiz"
+      responses:
+        "201":
+          description: Created
+  /quiz/{id}:
+    get:
+      summary: Returns a quiz by ID
+      tags:
+        - quiz
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the quiz to return
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A quiz object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/quiz"
+    patch:
+      summary: Update a quiz by Id
+      tags:
+        - quiz
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the quiz to update
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The newly updated quiz
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/quiz"
+    delete:
+      summary: Delete a quiz by Id
+      tags:
+        - quiz
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the quiz to update
+          schema:
+            type: string
+      responses:
+        "204":
+          description: nothing to display
+  /question:
+    get:
+      summary: Gets all question
+      tags:
+        - question
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: sorts the quizzes according to the specified parameter
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: number of quizzes contained in a page
+        - in: query
+          name: fields
+          schema:
+            type: integer
+          description: The fields to be displayed when the query returns
+
+      description: Returns a list containing all questions
+      responses:
+        "200":
+          description: A list of Questions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: add a question
+      tags:
+        - question
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/question"
+      responses:
+        "201":
+          description: Created
+  /question/{id}:
+    get:
+      summary: Returns a question by ID
+      tags:
+        - question
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the question to return
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A question object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/question"
+    patch:
+      summary: Update a question by Id
+      tags:
+        - question
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the question to update
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The newly updated question
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/question"
+    delete:
+      summary: Delete a question by Id
+      tags:
+        - question
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the question to update
+          schema:
+            type: string
+      responses:
+        "204":
+          description: nothing to display
+  /answer-sheet:
+    get:
+      summary: Gets all answer sheets
+      tags:
+        - answer sheet
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: sorts the quizzes according to the specified parameter
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: number of quizzes contained in a page
+        - in: query
+          name: fields
+          schema:
+            type: integer
+          description: The fields to be displayed when the query returns
+
+      description: Returns a list containing all answer sheets
+      responses:
+        "200":
+          description: A list of answer sheets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: add a answer sheet
+      tags:
+        - answer sheet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/answerSheet"
+      responses:
+        "201":
+          description: Created
+  /answer-sheet/{id}:
+    get:
+      summary: Returns a answer sheet by ID
+      tags:
+        - answer sheet
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer sheet to return
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A answer sheet object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/answerSheet"
+    patch:
+      summary: Update a answer sheet by Id
+      tags:
+        - answer sheet
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer sheet to update
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The newly updated answer sheet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/answerSheet"
+    delete:
+      summary: Delete a answer sheet by Id
+      tags:
+        - answer sheet
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer sheet to update
+          schema:
+            type: string
+      responses:
+        "204":
+          description: nothing to display
+  /answer:
+    get:
+      summary: Gets all answer
+      tags:
+        - answer
+      parameters:
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: sorts the quizzes according to the specified parameter
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: number of quizzes contained in a page
+        - in: query
+          name: fields
+          schema:
+            type: integer
+          description: The fields to be displayed when the query returns
+
+      description: Returns a list containing all answers
+      responses:
+        "200":
+          description: A list of answers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: add a answer
+      tags:
+        - answer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/answer"
+      responses:
+        "201":
+          description: Created
+  /answer/{id}:
+    get:
+      summary: Returns a answer by ID
+      tags:
+        - answer
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer to return
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A answer object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/answer"
+    patch:
+      summary: Update a answer by Id
+      tags:
+        - answer
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer to update
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The newly updated answer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/answer"
+    delete:
+      summary: Delete a answer by Id
+      tags:
+        - answer
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The Id of the answer to update
+          schema:
+            type: string
+      responses:
+        "204":
+          description: nothing to display
+components:
+  schemas:
+    quiz:
+      type: object
+      properties:
+        category:
+          type: string
+        timer:
+          type: number
+        title:
+          type: string
+        description:
+          type: string
+        totalScore:
+          type: number
+        questions:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+    question:
+      type: object
+      properties:
+        question:
+          type: string
+        score:
+          type: number
+        questionType:
+          type: string
+          enum:
+            - "yes or no"
+            - "true or false"
+            - "multiple choice"
+            - "text input"
+            - "single choice from multiple options"
+        rightAnswer:
+          type: string
+        answers:
+          type: array
+          items:
+            type: string
+    answerSheet:
+      type: object
+      properties:
+        userId:
+          type: string
+        quizId:
+          type: string
+        category:
+          type: string
+        totalScore:
+          type: string
+        answers:
+          type: array
+          items:
+            type: string
+    answer:
+      type: object
+      properties:
+        userAnswer:
+          type: string
+        isCorrect:
+          type: boolean
+        answerSheetId:
+          type: string
+        questionId:
+          type: string
+servers:
+  - url: "http://127.0.0.1:3000/api/v1"

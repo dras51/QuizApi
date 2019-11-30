@@ -49,6 +49,10 @@ MONGODB_URI= mongodb+srv://Myname:mypass@mymongodburl.com
 MONGODB_URI_LOCAL=mongodb://localhost:27017/mydatabase
 ```
 
+## Documentation
+
+https://127.0.0.1:3000/api-docs
+
 ## Built With
 
 - [Node](https://nodejs.org/) - JavaScript Runtime
