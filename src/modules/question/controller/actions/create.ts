@@ -1,6 +1,6 @@
 import Question from 'questionModule/model/index';
 import express, { NextFunction } from 'express';
-import catchAsync from 'util/catchAsync';
+import catchAsync from 'util/catch-async';
 
 const createQuestion = catchAsync(
   async (req: express.Request, res: express.Response, next: NextFunction) => {

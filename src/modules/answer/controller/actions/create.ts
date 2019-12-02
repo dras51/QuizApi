@@ -1,6 +1,6 @@
 import Answer from 'answer-module/model';
 import express from 'express';
-import catchAsync from 'util/catchAsync';
+import catchAsync from 'util/catch-async';
 
 const createAnswer = catchAsync(
   async (req: express.Request, res: express.Response) => {

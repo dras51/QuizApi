@@ -1,8 +1,6 @@
 import Quiz from 'quizModule/model/index';
-import catchAsync from 'util/catchAsync';
+import catchAsync from 'util/catch-async';
 import express, { NextFunction } from 'express';
-import { runInNewContext } from 'vm';
-import AppError from 'util/appError';
 
 const createQuiz = catchAsync(
   async (req: express.Request, res: express.Response, next: NextFunction) => {

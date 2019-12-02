@@ -1,7 +1,7 @@
 import Answer from 'answer-module/model/index';
 import express, { NextFunction } from 'express';
-import catchAsync from 'util/catchAsync';
-import AppError from 'util/appError';
+import catchAsync from 'util/catch-async';
+import AppError from 'util/app-error';
 
 const updateAnswer = catchAsync(
   async (req: express.Request, res: express.Response, next: NextFunction) => {

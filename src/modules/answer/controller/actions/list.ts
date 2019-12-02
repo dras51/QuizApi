@@ -1,7 +1,7 @@
 import Answer from 'answer-module/model';
 import express from 'express';
 import ApiFeatures from 'util/api-features';
-import catchAsync from 'util/catchAsync';
+import catchAsync from 'util/catch-async';
 
 const listAnswer = catchAsync(
   async (req: express.Request, res: express.Response) => {

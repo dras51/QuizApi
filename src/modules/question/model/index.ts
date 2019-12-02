@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import Quiz, { IQuizProps } from '../../quiz/model';
-import AppError from 'util/appError';
+import AppError from 'util/app-error';
 import { hasOne } from 'util/model-relationships';
 
 const identifier = Schema.Types.ObjectId;

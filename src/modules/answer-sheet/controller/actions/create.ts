@@ -1,6 +1,6 @@
 import AnswerSheet from 'answer-sheet-module/model/index';
 import express, { NextFunction } from 'express';
-import catchAsync from 'util/catchAsync';
+import catchAsync from 'util/catch-async';
 
 const createAnswerSheet = catchAsync(
   async (req: express.Request, res: express.Response, next: NextFunction) => {

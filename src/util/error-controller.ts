@@ -2,7 +2,7 @@ import express from 'express';
 import Mongoose, { CastError } from 'mongoose';
 import { MongoError } from 'mongodb';
 import { StackData } from 'stack-utils';
-import AppError from './appError';
+import AppError from './app-error';
 
 const handleCastErrorDB = (err: Mongoose.CastError) => {
   const message = `invalid ${err.path}: ${err.value}`;
